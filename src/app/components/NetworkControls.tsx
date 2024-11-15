@@ -221,8 +221,10 @@ const NetworkControls = () => {
                                 onTouchEnd={stopIncreaseBandwidth}
                                 className="w-full md:w-2/3 h-14 text-lg bg-[#F74C30] hover:bg-[#F74C30]/80 text-white font-bold transition-transform hover:scale-105"
                             >
-                                <Activity className="w-6 h-6 mr-2" />
-                                Increase Bandwidth
+                                <Activity className="w-6 h-6 mr-2 animate-pulse select-none" />
+                                <span className="select-none">
+                                    Increase Bandwidth
+                                </span>
                             </Button>
                         </div>
                     </div>
@@ -261,13 +263,15 @@ const NetworkControls = () => {
                                 className="touch-none w-full md:w-2/3 h-14 text-lg bg-[#8B2213] hover:bg-[#8B2213]/80 text-white font-bold transition-transform hover:scale-105"
                             >
                                 <Gauge className="w-6 h-6 mr-2" />
-                                Reduce Latency
+                                <span className="select-none">
+                                    Reduce Latency
+                                </span>
                             </Button>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer className="text-center mt-8 sticky bottom-0 pb-4">
+            <footer className="text-center mt-8 pb-4">
                 <p className="mb-4">© 2024 IBRL</p>
                 <div className="flex justify-center gap-4">
                     <a
@@ -286,7 +290,12 @@ const NetworkControls = () => {
                     >
                         <Send className="w-6 h-6" />
                     </a>
-                    <a href="https://www.figma.com/design/b0D9HDYxrUOyFlddz6UGNn/Untitled?node-id=3-34&t=kb42zplyLYTDT4S1-1" className="">
+                    <a
+                        href="https://www.figma.com/design/b0D9HDYxrUOyFlddz6UGNn/Untitled?node-id=0-1&t=fmHSsbfnEU7T8YN8-1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-[#F74C30] transition-colors"
+                    >
                         Make Stickers
                     </a>
                 </div>
