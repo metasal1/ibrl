@@ -39,19 +39,36 @@ style.textContent = `
   .animate-wave2 {
     animation: wave2 8s linear infinite;
   }
+
+  .ribbon {
+    position: fixed;
+    right: -50px;
+    top: 30px;
+    transform: rotate(45deg);
+    background: linear-gradient(45deg, #F74C30, #8B2213);
+    padding: 8px 40px;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+  }
+
+  .ribbon:hover {
+    padding: 8px 50px;
+    background: #F74C30;
+  }
 `;
 document.head.appendChild(style);
 
 const NetworkControls = () => {
-    const [bandwidth, setBandwidth] = useState(100);
-    const [latency, setLatency] = useState(50);
+    const [bandwidth, setBandwidth] = useState(69);
+    const [latency, setLatency] = useState(400);
     const bandwidthInterval = useRef<NodeJS.Timeout | null>(null);
     const latencyInterval = useRef<NodeJS.Timeout | null>(null);
 
     const startIncreaseBandwidth = () => {
         if (!bandwidthInterval.current) {
             bandwidthInterval.current = setInterval(() => {
-                setBandwidth((prev: number) => Math.min(prev + 2, 200));
+                setBandwidth((prev: number) => Math.min(prev + 2, 1000));
             }, 50);
         }
     };
@@ -62,9 +79,9 @@ const NetworkControls = () => {
             bandwidthInterval.current = null;
             const decreaseInterval = setInterval(() => {
                 setBandwidth(prev => {
-                    if (prev <= 100) {
+                    if (prev <= 69) {
                         clearInterval(decreaseInterval);
-                        return 100;
+                        return 69;
                     }
                     return prev - 1;
                 });
@@ -86,9 +103,9 @@ const NetworkControls = () => {
             latencyInterval.current = null;
             const increaseInterval = setInterval(() => {
                 setLatency(prev => {
-                    if (prev >= 50) {
+                    if (prev >= 400) {
                         clearInterval(increaseInterval);
-                        return 50;
+                        return 400;
                     }
                     return prev + 1;
                 });
@@ -103,12 +120,22 @@ const NetworkControls = () => {
         };
     }, []);
 
-    const bandwidthPercentage = ((bandwidth - 100) / 100) * 100;
-    const latencyPercentage = (latency / 50) * 100;
+    const bandwidthPercentage = ((bandwidth - 69) / (1000 - 69)) * 100;
+    const latencyPercentage = (latency / 400) * 100;
 
     return (
         <div className="min-h-screen w-full bg-[url('/bg.jpg')] bg-cover bg-center bg-no-repeat text-white p-4 md:p-8">
             <CustomCursor />
+
+            <a
+                href="https://t.me/addstickers/IBRLsolana"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ribbon font-bold text-white no-underline"
+            >
+                Get Stickers
+            </a>
+
             {/* Background overlay for better text readability */}
             <div className="fixed inset-0 bg-black/50 pointer-events-none" />
 
