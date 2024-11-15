@@ -56,6 +56,16 @@ style.textContent = `
     padding: 8px 50px;
     background: #F74C30;
   }
+
+  @keyframes latencyPulse {
+    0% { opacity: 0.7; transform: scaleY(1); }
+    50% { opacity: 0.3; transform: scaleY(0.97); }
+    100% { opacity: 0.7; transform: scaleY(1); }
+  }
+
+  .animate-latency {
+    animation: latencyPulse 2s ease-in-out infinite;
+  }
 `;
 document.head.appendChild(style);
 
@@ -68,7 +78,7 @@ const NetworkControls = () => {
     const startIncreaseBandwidth = () => {
         if (!bandwidthInterval.current) {
             bandwidthInterval.current = setInterval(() => {
-                setBandwidth((prev: number) => Math.min(prev + 2, 1000));
+                setBandwidth((prev: number) => Math.min(prev + 2, 100));
             }, 50);
         }
     };
@@ -93,7 +103,7 @@ const NetworkControls = () => {
         if (!latencyInterval.current) {
             latencyInterval.current = setInterval(() => {
                 setLatency(prev => Math.max(prev - 1, 0));
-            }, 50);
+            }, 5);
         }
     };
 
@@ -109,7 +119,7 @@ const NetworkControls = () => {
                     }
                     return prev + 1;
                 });
-            }, 50);
+            }, 10);
         }
     };
 
@@ -120,7 +130,7 @@ const NetworkControls = () => {
         };
     }, []);
 
-    const bandwidthPercentage = ((bandwidth - 69) / (1000 - 69)) * 100;
+    const bandwidthPercentage = ((bandwidth - 69) / (100 - 69)) * 100;
     const latencyPercentage = (latency / 400) * 100;
 
     return (
@@ -232,7 +242,7 @@ const NetworkControls = () => {
                       rgba(139, 34, 19, 0.3) 100%)`
                                     }}
                                 >
-                                    <div className="absolute w-full h-full animate-pulse opacity-50"
+                                    <div className="absolute w-full h-full animate-latency"
                                         style={{
                                             background: `repeating-linear-gradient(0deg,
                         transparent,
@@ -275,6 +285,9 @@ const NetworkControls = () => {
                         className="text-white hover:text-[#F74C30] transition-colors"
                     >
                         <Send className="w-6 h-6" />
+                    </a>
+                    <a href="https://www.figma.com/design/b0D9HDYxrUOyFlddz6UGNn/Untitled?node-id=3-34&t=kb42zplyLYTDT4S1-1" className="">
+                        Make Stickers
                     </a>
                 </div>
             </footer>
