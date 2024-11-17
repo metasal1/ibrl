@@ -21,9 +21,21 @@ export async function GET(request: Request) {
         }, { status: 400 });
     }
 
+    if (!process.env.TWITTER_BEARER_TOKEN) {
+        return NextResponse.json({
+            error: 'Configuration error',
+            message: 'Twitter API credentials are not properly configured'
+        }, { status: 500 });
+    }
+
     try {
         const response = await fetch(
-            `https://react-tweet.vercel.app/api/tweet/${tweetId}`
+            `https://api.twitter.com/2/tweets/${tweetId}?expansions=author_id&user.fields=name,username,profile_image_url`,
+            {
+                headers: {
+                    'Authorization': `Bearer ${process.env.TWITTER_BEARER_TOKEN}`,
+                },
+            }
         );
 
         if (!response.ok) {
@@ -31,15 +43,30 @@ export async function GET(request: Request) {
 
             // Handle specific HTTP status codes
             switch (status) {
+                case 401:
+                    return NextResponse.json({
+                        error: 'Authentication failed',
+                        message: 'Failed to authenticate with Twitter API'
+                    }, { status: 401 });
+                case 403:
+                    return NextResponse.json({
+                        error: 'Access denied',
+                        message: 'The request is not authorized to access this resource'
+                    }, { status: 403 });
                 case 404:
                     return NextResponse.json({
                         error: 'Not found',
                         message: 'The requested post could not be found. It may have been deleted or made private'
                     }, { status: 404 });
+                case 429:
+                    return NextResponse.json({
+                        error: 'Rate limit exceeded',
+                        message: 'Twitter API rate limit has been reached. Please try again later'
+                    }, { status: 429 });
                 default:
                     return NextResponse.json({
-                        error: 'API error',
-                        message: `API returned status code: ${status}`,
+                        error: 'Twitter API error',
+                        message: `Twitter API returned status code: ${status}`,
                         details: await response.text()
                     }, { status });
             }

@@ -16,7 +16,8 @@ export default function Home() {
         <StickerRibbon />
 
         {/* Background overlay for better text readability */}
-        <div className="fixed inset-0 bg-black/50 pointer-events-none" />
+        {/* <div className="fixed inset-0 bg-black/50 pointer-events-none" /> */}
+        <div className="fixed" />
 
         {/* Decorative elements with new colors */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none">

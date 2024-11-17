@@ -1,5 +1,7 @@
 import EmbedTweet from "./EmbedTweet";
 import Tools from "./Tools";
+import { FaTwitter, FaTelegram } from "react-icons/fa";
+import { SiEagle } from "react-icons/si";
 
 export default function Header() {
     return <div className="relative max-w-7xl mx-auto">
@@ -18,6 +20,38 @@ export default function Header() {
             Increase Bandwidth
             Reduce Latency
         </h1>
+
+        <div className="flex justify-center gap-6 mb-8">
+            <a
+                href="https://twitter.com/IBRLSolana"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#F74C30] hover:text-[#8B2213] transition-colors duration-200"
+            >
+                <FaTwitter size={64} />
+            </a>
+            <a
+                href="https://t.me/IBRLsolana"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#F74C30] hover:text-[#8B2213] transition-colors duration-200"
+            >
+                <FaTelegram size={64} />
+            </a>
+            <a
+                href="https://dexscreener.com/solana/4dvyxv8kxhfpww2yrwl1wdauud4kfxqkridf3y33zg59"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#F74C30] hover:text-[#8B2213] transition-colors duration-200"
+            >
+                <SiEagle size={64} />
+            </a>
+        </div>
+        <div onClick={() => navigator.clipboard.writeText('E7tuVmCywD2UzrDomUQWgmpVWfA4qjFyRb9EDX5wpump')}>
+            <code className="flex justify-center hover:cursor-pointer hover:text-[#8B2213] transition-colors duration-200">
+                E7tuVmCywD2UzrDomUQWgmpVWfA4qjFyRb9EDX5wpump
+            </code>
+        </div>
         <Tools />
         <EmbedTweet />
     </div>
