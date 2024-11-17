@@ -2,7 +2,7 @@ import { Twitter, Send } from 'lucide-react';
 
 
 export default function Footer() {
-    return <footer className="text-center mt-8 pb-4">
+    return <footer className="text-center mt-8 pb-4 ribbonflat">
         <p className="mb-4">© 2024 IBRL</p>
         <div className="flex justify-center gap-4">
             <a

@@ -5,7 +5,7 @@ import { SiEagle } from "react-icons/si";
 
 export default function Header() {
     return <div className="relative max-w-7xl mx-auto">
-        <h1 className="text-5xl md:text-[12rem] font-extrabold text-center mb-12 tracking-wider thick-text uppercase"
+        <h1 className="text-7xl md:text-[12rem] font-extrabold text-center mb-12 tracking-wider thick-text uppercase"
             style={{
                 background: 'linear-gradient(to bottom right, #F74C30, #8B2213)',
                 WebkitBackgroundClip: 'text',
@@ -16,7 +16,7 @@ export default function Header() {
             IBRL
         </h1>
 
-        <h1 className="text-4xl md:text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#F74C30] to-[#8B2213]">
+        <h1 className="text-4xl md:text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-[#FF0000] to-[#00FF00]">
             Increase Bandwidth
             Reduce Latency
         </h1>

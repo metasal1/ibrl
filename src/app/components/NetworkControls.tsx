@@ -120,7 +120,7 @@ const NetworkControls = () => {
                             onMouseLeave={stopIncreaseBandwidth}
                             onTouchStart={startIncreaseBandwidth}
                             onTouchEnd={stopIncreaseBandwidth}
-                            className="w-full md:w-2/3 h-14 text-lg bg-[#F74C30] hover:bg-[#F74C30]/80 text-white font-bold transition-transform hover:scale-105"
+                            className="w-full md:w-2/3 h-14 text-lg bg-[#F74C30] hover:bg-[#ff0000] text-white font-bold transition-transform hover:scale-105"
                         >
                             <Activity className="w-6 h-6 mr-2 animate-pulse select-none" />
                             <span className="select-none">
@@ -161,7 +161,7 @@ const NetworkControls = () => {
                             onMouseLeave={stopReduceLatency}
                             onTouchStart={startReduceLatency}
                             onTouchEnd={stopReduceLatency}
-                            className="touch-none w-full md:w-2/3 h-14 text-lg bg-[#8B2213] hover:bg-[#8B2213]/80 text-white font-bold transition-transform hover:scale-105"
+                            className="touch-none w-full md:w-2/3 h-14 text-lg bg-[#ff0000] hover:bg-[#8B2213]/80 text-white font-bold transition-transform hover:scale-105"
                         >
                             <Gauge className="w-6 h-6 mr-2" />
                             <span className="select-none">

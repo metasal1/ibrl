@@ -126,3 +126,17 @@ body {
 .ribbon:hover {
     background: linear-gradient(to right, #8B2213, #F74C30);
 }
+
+.ribbonflat {
+    background: linear-gradient(to right, #F74C30, #8B2213);
+    padding: 8px 75px;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: block;
+}
